@@ -12,6 +12,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBarWidget(), body: LevelButtonWidget());
+    return Scaffold(
+        appBar: AppBarWidget(),
+        body: LevelButtonWidget(
+          label: "Fácil",
+        ));
   }
 }
