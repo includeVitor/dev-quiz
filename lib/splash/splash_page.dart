@@ -1,6 +1,6 @@
-import 'package:DevQuiz/core/app_images.dart';
+import 'package:nlw5_flutter/core/app_images.dart';
 import 'package:flutter/material.dart';
-import '../core//app_gradients.dart';
+import 'package:nlw5_flutter/core/app_gradients.dart';
 
 class SplashPage extends StatelessWidget {
   @override
