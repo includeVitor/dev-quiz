@@ -9,13 +9,14 @@ class AppBarWidget extends PreferredSize {
             preferredSize: Size.fromHeight(250),
             child: Container(
               height: 250,
-              decoration: BoxDecoration(gradient: AppGradients.linear),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
+              child: Stack(
+                children: [
+                  Container(
+                    height: 161,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(gradient: AppGradients.linear),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text.rich(
@@ -41,9 +42,10 @@ class AppBarWidget extends PreferredSize {
                         )
                       ],
                     ),
-                    ScoreCardWidget()
-                  ],
-                ),
+                  ),
+                  Align(
+                      alignment: Alignment(0.0, 1.0), child: ScoreCardWidget())
+                ],
               ),
             ));
 }
