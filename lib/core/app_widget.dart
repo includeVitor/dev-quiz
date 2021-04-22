@@ -8,7 +8,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "nlw5_flutter",
-      home: ChallengePage(),
+      home: HomePage(),
     );
   }
 }

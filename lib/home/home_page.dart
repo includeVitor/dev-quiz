@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nlw5_flutter/challenge/widgets/quiz/quiz_widget.dart';
 import 'package:nlw5_flutter/home/home_controller.dart';
 import 'package:nlw5_flutter/home/widgets/appbar/app_bar_widget.dart';
 import 'package:nlw5_flutter/home/widgets/level_button/level_button_widget.dart';
@@ -13,10 +14,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getUser();
+    controller.getQuizzes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget(),
+        appBar: AppBarWidget(
+          user: controller.user!,
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
@@ -43,15 +54,12 @@ class _HomePageState extends State<HomePage> {
               ),
               Expanded(
                 child: GridView.count(
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  crossAxisCount: 2,
-                  children: [
-                    QuizCardWidget(),
-                    QuizCardWidget(),
-                    QuizCardWidget()
-                  ],
-                ),
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    crossAxisCount: 2,
+                    children: controller.quizzes!
+                        .map((e) => QuizCardWidget())
+                        .toList()),
               )
             ],
           ),
