@@ -24,7 +24,14 @@ class HomeController {
           image: AppImages.blocks,
           title: "NLW 5 Flutter",
           level: Level.facil,
+          questionAnswered: 1,
           questions: [
+            QuestionModel(title: "Está curtindo o Flutter?", answers: [
+              AnswerModel(title: "Estou curtindo"),
+              AnswerModel(title: "Amando Flutter"),
+              AnswerModel(title: "Muito top"),
+              AnswerModel(title: "Show de bola", isRight: true)
+            ]),
             QuestionModel(title: "Está curtindo o Flutter?", answers: [
               AnswerModel(title: "Estou curtindo"),
               AnswerModel(title: "Amando Flutter"),
