@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:nlw5_flutter/core/app_images.dart';
 import 'package:nlw5_flutter/home/home_state.dart';
 import 'package:nlw5_flutter/shared/models/answer_model.dart';
@@ -6,19 +7,29 @@ import 'package:nlw5_flutter/shared/models/quiz_model.dart';
 import 'package:nlw5_flutter/shared/models/user_model.dart';
 
 class HomeController {
-  HomeState state = HomeState.empty;
+  final stateNotifier = ValueNotifier<HomeState>(HomeState.empty);
+  set state(HomeState state) => stateNotifier.value = state;
+  HomeState get state => stateNotifier.value;
 
   UserModel? user;
   List<QuizModel>? quizzes;
 
-  void getUser() {
+  void getUser() async {
+    state = HomeState.loading;
+    await Future.delayed(Duration(seconds: 2));
+
     user = UserModel(
       name: "Vitor",
       photoUrl: "https://avatars.githubusercontent.com/u/38621315?v=4",
     );
+
+    state = HomeState.success;
   }
 
-  void getQuizzes() {
+  void getQuizzes() async {
+    state = HomeState.loading;
+    await Future.delayed(Duration(seconds: 2));
+
     quizzes = [
       QuizModel(
           image: AppImages.blocks,
@@ -40,5 +51,6 @@ class HomeController {
             ])
           ])
     ];
+    state = HomeState.success;
   }
 }
