@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nlw5_flutter/home/home_controller.dart';
 import 'package:nlw5_flutter/home/widgets/appbar/app_bar_widget.dart';
 import 'package:nlw5_flutter/home/widgets/level_button/level_button_widget.dart';
 import 'package:nlw5_flutter/home/widgets/quiz_card/quiz_card_widget.dart';
@@ -11,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = HomeController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
