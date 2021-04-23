@@ -16,7 +16,7 @@ class QuestionModel {
   Map<String, dynamic> toMap() {
     return {
       'title': title,
-      'answers': answers?.map((x) => x.toMap())?.toList(),
+      'answers': answers.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -24,7 +24,7 @@ class QuestionModel {
     return QuestionModel(
       title: map['title'],
       answers: List<AnswerModel>.from(
-          map['answers']?.map((x) => AnswerModel.fromMap(x))),
+          map['answers'].map((x) => AnswerModel.fromMap(x))),
     );
   }
 
