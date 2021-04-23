@@ -27,10 +27,11 @@ class _ChallengePageState extends State<ChallengePage> {
   }
 
   void nextPage() {
-    pageController.nextPage(
-      duration: Duration(milliseconds: 100),
-      curve: Curves.linear,
-    );
+    if (controller.currentPage < widget.questions.length)
+      pageController.nextPage(
+        duration: Duration(milliseconds: 100),
+        curve: Curves.linear,
+      );
   }
 
   @override
@@ -73,23 +74,31 @@ class _ChallengePageState extends State<ChallengePage> {
         bottom: true,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                  child: NextButtonWidget.white(
-                label: "Pular",
-                onTap: nextPage,
-              )),
-              SizedBox(
-                width: 7,
-              ),
-              // Expanded(
-              //     child: NextButtonWidget.green(
-              //   label: "Confirmar",
-              //   onTap: () {},
-              // ))
-            ],
+          child: ValueListenableBuilder<int>(
+            valueListenable: controller.currentPageNotifier,
+            builder: (context, value, _) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                if (value < widget.questions.length)
+                  Expanded(
+                      child: NextButtonWidget.white(
+                    label: "Pular",
+                    onTap: nextPage,
+                  )),
+                SizedBox(
+                  width: 7,
+                ),
+                if (value == widget.questions.length)
+                  Expanded(
+                    child: NextButtonWidget.green(
+                      label: "Confirmar",
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  )
+              ],
+            ),
           ),
         ),
       ),
