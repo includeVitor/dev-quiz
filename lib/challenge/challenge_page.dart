@@ -20,11 +20,8 @@ class _ChallengePageState extends State<ChallengePage> {
 
   @override
   void initState() {
-    controller.currentPageNotifier.addListener(() {
-      setState(() {});
-    });
     pageController.addListener(() {
-      controller.currentPage = pageController.page!.toInt();
+      controller.currentPage = pageController.page!.toInt() + 1;
     });
     super.initState();
   }
@@ -45,9 +42,12 @@ class _ChallengePageState extends State<ChallengePage> {
                   Navigator.pop(context);
                 },
               ),
-              QuestionIndicatorWidget(
-                currentPage: controller.currentPage,
-                length: widget.questions.length,
+              ValueListenableBuilder<int>(
+                valueListenable: controller.currentPageNotifier,
+                builder: (context, value, _) => QuestionIndicatorWidget(
+                  currentPage: value,
+                  length: widget.questions.length,
+                ),
               ),
             ],
           ),
