@@ -54,6 +54,7 @@ class _ChallengePageState extends State<ChallengePage> {
         ),
       ),
       body: PageView(
+          physics: NeverScrollableScrollPhysics(),
           controller: pageController,
           children:
               widget.questions.map((e) => QuizWidget(question: e)).toList()),
@@ -65,7 +66,14 @@ class _ChallengePageState extends State<ChallengePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Expanded(
-                  child: NextButtonWidget.white(label: "Fácil", onTap: () {})),
+                  child: NextButtonWidget.white(
+                      label: "Próximo",
+                      onTap: () {
+                        pageController.nextPage(
+                          duration: Duration(milliseconds: 100),
+                          curve: Curves.linear,
+                        );
+                      })),
               SizedBox(
                 width: 7,
               ),
