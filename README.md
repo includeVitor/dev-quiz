@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img alt="DevQuiz" src=".github/devquiz.png" width="100%">
+  <img alt="DevQuiz" src="/devquiz.png" width="100%">
 </p>
 
 To start the application:
