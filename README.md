@@ -1,4 +1,4 @@
-# dev-quiz
+# dev-quiz &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/includeVitor/dev-quiz/blob/main/LICENSE)
 
 <p align="center">
   <img  alt="DevQuiz" src="/devquiz.png" width="50%" height="50%">
