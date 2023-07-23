@@ -6,7 +6,10 @@
 </p>
 
 To start the application:
--  Run `flutter run`
+
+```
+flutter run
+```
 
 Checkout the [Figma layout](https://www.figma.com/file/fMqKhwT9L5D3MVe4btRtG5/DevQuiz/duplicate)
 
